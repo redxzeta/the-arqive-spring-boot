@@ -3,6 +3,8 @@ package com.thearqive.backend.entities;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -18,6 +20,8 @@ public class UserProfile {
     private Boolean profilePrivate;
     @ManyToOne(fetch = FetchType.LAZY)
     private Roles role;
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+    private List<Pins> pins = new ArrayList<>();
 
 
 }
