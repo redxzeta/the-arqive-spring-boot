@@ -21,11 +21,10 @@ public class RolesController {
     }
 
     @GetMapping("/{id}")
-    public List<RolesDto> getRoleById(@PathVariable Long id) {
-        return rolesService.findAllRoles();
+    public RolesDto getRoleById(@PathVariable Long id) {
+        return rolesService.getRoleById(id);
     }
-
-
+    
     @PostMapping
     public RolesDto createNewRole(@RequestBody RolesDtoForm rolesDtoForm) {
         return rolesService.createNewRole(rolesDtoForm);
