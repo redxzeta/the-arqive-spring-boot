@@ -20,8 +20,8 @@ public class PinsController {
 
     }
 
-    @GetMapping
-    public PinsDto getPinById(@PathVariable Long id){
+    @GetMapping("/{id}")
+    public PinsDto getAPinById(@PathVariable Long id){
         return pinsService.getPinById(id);
     }
 
@@ -34,6 +34,7 @@ public class PinsController {
     public List<PinsDto> getUserPins(@PathVariable Long userId){
         return pinsService.getUserPins(userId);
     }
+
     @DeleteMapping("/{id}")
     public Long deletePinById(@PathVariable Long id){
         return pinsService.deletePinById(id);

@@ -44,4 +44,9 @@ public class UserProfileServiceImpl implements UserProfileService {
         userProfileRepository.deleteById(id);
         return id;
     }
+
+    @Override
+    public List<UserProfileDto> getAllUserProfilesByRole(Long roleId) {
+       return converter.userProfileListEntityToUserProfileDto(userProfileRepository.getUserProfileByRoleId(roleId));
+    }
 }

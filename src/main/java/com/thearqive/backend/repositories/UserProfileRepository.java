@@ -12,4 +12,6 @@ public interface UserProfileRepository extends CrudRepository<UserProfile, Long>
     List<UserProfile> findAll();
 
     UserProfile getUserProfileById(Long id);
+
+    List<UserProfile> getUserProfileByRoleId(Long roleId);
 }
