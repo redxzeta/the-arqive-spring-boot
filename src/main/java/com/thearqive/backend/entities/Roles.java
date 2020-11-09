@@ -13,7 +13,7 @@ public class Roles {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+    @OneToMany
     private List<UserProfile> userProfile = new ArrayList<>();
 
 }

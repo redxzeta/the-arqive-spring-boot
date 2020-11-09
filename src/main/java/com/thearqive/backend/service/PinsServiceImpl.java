@@ -42,4 +42,9 @@ public class PinsServiceImpl implements PinsService {
         pinsRepository.deleteById(id);
         return id;
     }
+
+    @Override
+    public List<PinsDto> getUserPins(Long userId) {
+        return converter.pinsListEntityToPinDto(pinsRepository.getUserPinsByUserProfileId(userId));
+    }
 }

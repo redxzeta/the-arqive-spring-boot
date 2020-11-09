@@ -13,4 +13,6 @@ public interface PinsService {
     PinsDto createNewPin(PinsFormDto pinsFormDto);
 
     Long deletePinById(Long id);
+
+    List<PinsDto> getUserPins(Long userId);
 }

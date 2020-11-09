@@ -10,4 +10,5 @@ public interface PinsRepository extends CrudRepository<Pins,Long> {
     List<Pins> findAll();
 
     Pins getPinById(Long id);
+    List<Pins> getUserPinsByUserProfileId(Long userId);
 }

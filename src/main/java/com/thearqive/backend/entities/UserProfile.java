@@ -20,7 +20,7 @@ public class UserProfile {
     private Boolean profilePrivate;
     @ManyToOne(fetch = FetchType.LAZY)
     private Roles role;
-    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
+    @OneToMany
     private List<Pins> pins = new ArrayList<>();
 
 
