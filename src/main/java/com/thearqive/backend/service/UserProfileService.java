@@ -14,4 +14,5 @@ public interface UserProfileService {
 
     UserProfileDto getUserProfileById(Long id);
 
+    Long deleteUserProfileById(Long id);
 }

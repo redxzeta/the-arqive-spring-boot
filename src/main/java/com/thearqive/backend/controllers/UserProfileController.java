@@ -21,11 +21,17 @@ public class UserProfileController {
     }
 
     @PostMapping
-    public UserProfileDto createUserProfile(@RequestBody UserProfileFormDto userProfileFormDto){
+    public UserProfileDto createUserProfile(@RequestBody UserProfileFormDto userProfileFormDto) {
         return userProfileService.createUserProfile(userProfileFormDto);
     }
+
     @GetMapping("/{id}")
-    public UserProfileDto getUserProfileById(@PathVariable Long id){
+    public UserProfileDto getUserProfileById(@PathVariable Long id) {
         return userProfileService.getUserProfileById(id);
+    }
+
+    @DeleteMapping("/{id}")
+    public Long deleteUserProfileById(@PathVariable Long id) {
+        return userProfileService.deleteUserProfileById(id);
     }
 }

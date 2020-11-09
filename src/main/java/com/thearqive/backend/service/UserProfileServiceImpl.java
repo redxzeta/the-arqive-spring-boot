@@ -38,4 +38,10 @@ public class UserProfileServiceImpl implements UserProfileService {
         return converter.userProfileEntityToDto(userProfileRepository.getUserProfileById(id));
 
     }
+
+    @Override
+    public Long deleteUserProfileById(Long id) {
+        userProfileRepository.deleteById(id);
+        return id;
+    }
 }
