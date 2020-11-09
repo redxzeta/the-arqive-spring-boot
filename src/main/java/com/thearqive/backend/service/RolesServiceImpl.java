@@ -32,4 +32,16 @@ public class RolesServiceImpl implements RolesService {
         System.out.println(roles);
         return converter.rolesEntityToRolesDto(roles);
     }
+
+    @Override
+    public RolesDto getRoleById(Long id) {
+        Roles roles = rolesRepository.getById(id);
+        return converter.rolesEntityToRolesDto(roles);
+    }
+
+    @Override
+    public Long deleteRoleById(Long id) {
+        rolesRepository.deleteById(id);
+        return id;
+    }
 }

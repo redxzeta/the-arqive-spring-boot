@@ -8,4 +8,6 @@ import java.util.List;
 public interface RolesRepository extends CrudRepository<Roles, Long> {
     @Override
     List<Roles> findAll();
+
+    Roles getById(Long id);
 }

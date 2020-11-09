@@ -3,23 +3,26 @@ package com.thearqive.backend.converter;
 import com.thearqive.backend.dto.RolesDto;
 import com.thearqive.backend.dto.RolesDtoForm;
 import com.thearqive.backend.dto.UserProfileDto;
+import com.thearqive.backend.dto.UserProfileFormDto;
 import com.thearqive.backend.entities.Roles;
 import com.thearqive.backend.entities.UserProfile;
-import org.apache.catalina.User;
+import com.thearqive.backend.repositories.RolesRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Component
 public class Converter {
+    @Autowired
+    RolesRepository rolesRepository;
+
     public RolesDto rolesEntityToRolesDto(Roles roles) {
         RolesDto rolesDto = new RolesDto();
         rolesDto.setId(roles.getId());
         rolesDto.setName(roles.getName());
-        rolesDto.setUserProfile(roles.getUserProfile());
+        rolesDto.setUserProfile(userProfileListEntityToUserProfileDto(roles.getUserProfile()));
         return rolesDto;
     }
 
@@ -48,5 +51,16 @@ public class Converter {
     public List<UserProfileDto> userProfileListEntityToUserProfileDto(List<UserProfile> userProfiles) {
         return userProfiles.stream().map(userProfile -> userProfileEntityToDto(userProfile)).collect(Collectors.toList());
 
+    }
+
+    public UserProfile userProfileDtoFormToEntity(UserProfileFormDto userProfileFormDto) {
+        UserProfile userProfile = new UserProfile();
+        userProfile.setFirstName(userProfileFormDto.getFirstName());
+        userProfile.setLastName(userProfileFormDto.getLastName());
+        userProfile.setUserName(userProfileFormDto.getUserName());
+        userProfile.setBio(userProfileFormDto.getBio());
+        userProfile.setProfilePrivate(userProfileFormDto.getProfilePrivate());
+        userProfile.setRole(rolesRepository.getById(userProfileFormDto.getRole()));
+        return userProfile;
     }
 }

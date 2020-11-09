@@ -10,4 +10,8 @@ public interface RolesService {
     List<RolesDto> findAllRoles();
 
     RolesDto createNewRole(RolesDtoForm rolesDtoForm);
+
+    RolesDto getRoleById(Long id);
+
+    Long deleteRoleById(Long id);
 }

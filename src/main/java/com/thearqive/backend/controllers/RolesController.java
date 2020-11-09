@@ -16,17 +16,23 @@ public class RolesController {
     RolesService rolesService;
 
     @GetMapping
-    public List<RolesDto> getAllRoles (){
+    public List<RolesDto> getAllRoles() {
         return rolesService.findAllRoles();
     }
 
+    @GetMapping("/{id}")
+    public List<RolesDto> getRoleById(@PathVariable Long id) {
+        return rolesService.findAllRoles();
+    }
+
+
     @PostMapping
-    public RolesDto createNewRole (@RequestBody RolesDtoForm rolesDtoForm){
+    public RolesDto createNewRole(@RequestBody RolesDtoForm rolesDtoForm) {
         return rolesService.createNewRole(rolesDtoForm);
     }
 
-    @PostMapping("/test")
-    public RolesDtoForm createTEST (@RequestBody RolesDtoForm rolesDtoForm){
-        return rolesDtoForm;
+    @DeleteMapping("/{id}")
+    public Long deleteRole(@PathVariable Long id) {
+        return rolesService.deleteRoleById(id);
     }
 }
