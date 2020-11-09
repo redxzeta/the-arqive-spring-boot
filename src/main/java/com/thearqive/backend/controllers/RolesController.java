@@ -24,7 +24,7 @@ public class RolesController {
     public RolesDto getRoleById(@PathVariable Long id) {
         return rolesService.getRoleById(id);
     }
-    
+
     @PostMapping
     public RolesDto createNewRole(@RequestBody RolesDtoForm rolesDtoForm) {
         return rolesService.createNewRole(rolesDtoForm);
